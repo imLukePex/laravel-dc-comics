@@ -18,9 +18,9 @@ class ComicFactory extends Factory
     {
         return [
 
-            'title' => fake() -> word(3),
-            'author' => fake() -> word(3),
-            'description' => fake() -> paragraph(2),
+            'title' => fake() -> words(3, true),
+            'author' => fake() -> words(3, true),
+            'description' => fake() -> sentence(),
             'price' => fake() -> randomFloat(2, 3, 100),
         ];
     }
