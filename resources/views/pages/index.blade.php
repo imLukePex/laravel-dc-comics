@@ -20,6 +20,9 @@
                     <br>
                     Price: {{ $comic -> price}}
                 </a>
+                <a class="mx-4" href="{{ route('users.edit', $comic -> id) }}">
+                    EDIT
+                </a>
                 <form class="delete-button"
                 action="{{ route('users.destroy', $comic -> id) }}"
                 method="POST">
