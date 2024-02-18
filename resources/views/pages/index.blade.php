@@ -19,11 +19,19 @@
                     Description: {{ $comic -> description}}
                     <br>
                     Price: {{ $comic -> price}}
-                    <br>
-                    <br>
-                    <br>
                 </a>
+                <form class="delete-button"
+                action="{{ route('users.destroy', $comic -> id) }}"
+                method="POST">
 
+                @csrf
+                @method('DELETE')
+
+                    <input type="submit" value="X">
+                </form>
+                <br>
+                <br>
+                <br>
             </li>
         @endforeach
     </ul>
