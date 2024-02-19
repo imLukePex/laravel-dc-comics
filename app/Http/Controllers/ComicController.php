@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Comic;
 
+use App\Http\Requests\ComicFormRequest;
+
 class ComicController extends Controller
 {
     /**
@@ -36,7 +38,7 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicFormRequest $request)
     {
         $data = $request -> all();
 
@@ -85,11 +87,16 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComicFormRequest $request, $id)
     {
         $comic = Comic :: find($id);
 
         $data = $request -> all();
+
+        // $data = $request -> validate([
+        //     $this -> getValidationRules(),
+        //     $this -> getValidationMessages()
+        // ]);
 
         $comic -> title = $data['title'];
         $comic -> author = $data['author'];
@@ -114,4 +121,22 @@ class ComicController extends Controller
 
         return redirect() -> route('users.index');
     }
+
+
+    // private function getValidationRules() {
+
+    //     return [
+    //         'title' => 'required|min:2|max:255',
+    //         'author' => 'required|min:2|max:255',
+    //         'description' => 'required|min:20|max:255',
+    //         'price' => 'required|numeric|',
+    //     ];
+    // }
+
+    // private function getValidationMessages() {
+
+    //     return [
+    //         'title.min' => 'Attenzione! Il titolo non può essere minore di 2 caratteri'
+    //     ];
+    // }
 }

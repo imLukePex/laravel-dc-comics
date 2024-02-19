@@ -1,6 +1,6 @@
 @extends('layouts.main-layout')
 @section('head')
-    <title>Index</title>
+    <title>Comics</title>
 @endsection
 @section('content')
     <h1>Comics List:</h1>
@@ -30,7 +30,7 @@
                 @csrf
                 @method('DELETE')
 
-                    <input type="submit" value="X">
+                    <input onclick="return confirm('Confermare?');" type="submit" value="X">
                 </form>
                 <br>
                 <br>
